@@ -27,9 +27,11 @@
 
 ### Kubernetes cluster
 
-This lab runs on any K8s cluster with few adjusts on the ingresses, we recommend using a free trial account on the Google Cloud Platform. You can create one through this [documentation](https://cloud.google.com/free). You can download and install the Google CLI `gcloud` by checking this [document](https://cloud.google.com/sdk/docs/install).
+This lab runs on any K8s cluster with few adjusts on the ingresses, we recommend using a free trial account on either the Google Cloud Platform or Microsoft Azure.
 
-Alternatively, you can create one through this [documentation](https://azure.microsoft.com/free/). You can download and install the Google CLI `az` by checking this [document](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+You can create one through this [documentation](https://cloud.google.com/free). You can download and install the Google CLI `gcloud` by checking this [document](https://cloud.google.com/sdk/docs/install).
+
+Alternatively, you can create one through this [documentation](https://azure.microsoft.com/free/). You can download and install the Azure CLI `az` by checking this [document](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 #### Google Kubernetes Engine
 
@@ -42,7 +44,7 @@ In case you use a GCP account for this lab, we provided the Google Kubernetes En
 | GKE mode | `Standard with static K8s version` |
 | Location type | `Zonal` |
 | Release channel | `None` |
-| Kubernetes version | `1.24.x` |
+| Kubernetes version | `1.27.x` |
 | Number of nodes | `3` |
 | Machine type | `e2-standard-2` |
 | Image type | `cos_containerd` |
@@ -69,7 +71,7 @@ gcloud container clusters get-credentials cluster-1 --zone <your_closest_region>
 
 In case you use a Azure account for this lab, we provided the Azure Kubernetes Services (AKS) recommended configuration below:
 
-* GKE Configuration
+* AKS Configuration
 
 | **Parameter** | **Value** |
 |:--------------------------------|:--------------------------------|
@@ -77,7 +79,7 @@ In case you use a Azure account for this lab, we provided the Azure Kubernetes S
 | Type | `Microsoft.ContainerService/ManagedClusters` |
 | Location | `East US` (closest to you`) |
 | Auto Upgrade Type | `Disabled` |
-| Kubernetes version | `1.24.x` |
+| Kubernetes version | `1.27.x` |
 | Node pools | `1 node pool` |
 | Node size | `Standard_B4ms` |
 | Network type | `Kubenet` |
