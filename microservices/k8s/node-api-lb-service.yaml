@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-api-rod-lb
+  name: node-api-lb-svc
 spec:
   type: LoadBalancer
   selector:
-    app: node-api-rod
+    app: node-api-app
   ports:
   - protocol: TCP
     port: 60000

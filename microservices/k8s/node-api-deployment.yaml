@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: node-api-rod
+  name: node-api-app
 spec:
   selector:
     matchLabels:
-      app: node-api-rod
+      app: node-api-app
   replicas: 3
   template:
     metadata:
       labels:
-        app: node-api-rod
+        app: node-api-app
     spec:
       containers:
-      - name: node-api-rod
+      - name: node-api-app
         resources:
           requests:
             cpu: 100m
@@ -21,7 +21,7 @@ spec:
           limits:
             cpu: 200m
             memory: 200M
-        image: rod4n4m1/node-api:0.1.1
+        image: rod4n4m1/node-api:0.1.2
         imagePullPolicy: Always
         env:
           - name: PORT
