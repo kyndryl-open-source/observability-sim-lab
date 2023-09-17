@@ -23,7 +23,7 @@ data:
           runbook_url: "https://ansibletower.example.com"
           dashboard_url: "https://grafana.example.com"
       - alert: AppHTTPResolveTimePercentile
-        expr: (quantile_over_time(0.90,probe_http_duration_seconds{instance="http://34.151.222.192:60000/fortune",phase="resolve"}[28d]) > 0.5)
+        expr: (quantile_over_time(0.90,probe_http_duration_seconds{instance="http://20.124.40.37:60000/fortune",phase="resolve"}[28d]) > 0.5)
         for: 5m
         labels:
           severity: critical
@@ -54,17 +54,17 @@ data:
         params:
           module: [http_2xx]
         static_configs:
-         - targets:
-            - https://www.google.com
-            - http://35.198.12.48:60000/fortune
-            - https://prometheus.io
+        - targets:
+          - https://www.google.com
+          - http://<external_IP>:60000/fortune
+          - https://prometheus.io
         relabel_configs:
-         - source_labels: [__address__]
-           target_label: __param_target
-         - source_labels: [__param_target]
-           target_label: instance
-         - target_label: __address__
-           replacement: blackbox-service.monitoring.svc:9115 # The blackbox exporter.
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+        - target_label: __address__
+          replacement: blackbox-service.monitoring.svc:9115 # The blackbox exporter.
 
       - job_name: 'node-exporter'
         kubernetes_sd_configs:
@@ -85,6 +85,8 @@ data:
         - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
           action: keep
           regex: default;kubernetes;https
+        - target_label: __address__
+          replacement: kubernetes.default.svc:443
 
       - job_name: 'kubernetes-nodes'
         scheme: https

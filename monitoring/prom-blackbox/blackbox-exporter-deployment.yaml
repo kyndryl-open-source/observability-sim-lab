@@ -18,14 +18,13 @@ spec:
       restartPolicy: Always
       containers:
         - name: blackbox-exporter
-          image: prom/blackbox-exporter:latest
+          image: prom/blackbox-exporter:v0.24.0
           imagePullPolicy: IfNotPresent
           securityContext:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
             runAsGroup: 1000
-            readOnlyRootFilesystem: true
             capabilities:
               drop: ["ALL"]
           args:

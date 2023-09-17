@@ -2,7 +2,7 @@
 
 ## SRE Public Labs - OBSSIM
 
-* Version: `0.1.1`
+* Version: `0.1.2`
 * License: `MIT`
 
 ### Architecture

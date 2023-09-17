@@ -27,9 +27,10 @@ kubectl create  -f prom-server/prometheus-deployment.yaml
 # Prometheus Server - check if prometheus servers is running
 kubectl get deployments -n monitoring
 
-# Prometheus Server - create a service to expose a NodePort for the prometheus dashboard
+# Prometheus Server - create a service to expose the prometheus console using a NodePort service
 kubectl create -f prom-server/prometheus-service.yaml
 
+# You can alse create a secure ingress for prometheus server, but out of scope for this demo
 # kubectl create secret tls secure-ingress \
 #    --namespace monitoring \
 #    --key server.key \
